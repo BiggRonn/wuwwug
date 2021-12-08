@@ -1,0 +1,17 @@
+$bgcolor: black;
+$mainRed: #bd1515;
+$gold: #cbb26a;
+$brightRed: #e61f1f;
+$darkRed: #8f1010;
+$beige: #d8c690;
+$grey: #323232;
+
+
+$mobileWidth: 768px;
+
+@mixin mobile{
+    @media (max-width: #{$mobileWidth}){
+        @content
+    }
+}
+;
