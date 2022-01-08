@@ -4,7 +4,7 @@ import { collection, getDocs, query, where, addDoc, doc, updateDoc } from 'fireb
 import { projectStorage } from '../../firebase/config';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
-import Login from '../login/Login';
+
 
 
 export default function Find() {
@@ -87,7 +87,6 @@ export default function Find() {
                 })}
 
             </div>
-            <Login/>
         </div>
     )
 }
