@@ -12,8 +12,9 @@ import './App.scss';
 
 
 import { useState } from "react";
+import { AuthProvider } from "./contexts/AuthContext";
 
-// import {auth} from "./firebase/config"
+
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -23,6 +24,7 @@ function App() {
    
     <BrowserRouter>
     <div><Toaster /></div>
+    <AuthProvider>
     <Header menuOpen = {menuOpen} setMenuOpen = {setMenuOpen} />
     <Menu menuOpen = {menuOpen} setMenuOpen = {setMenuOpen} />
     <Routes>
@@ -31,6 +33,7 @@ function App() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
     </Routes>
+    </AuthProvider>
   </BrowserRouter>
   
    

@@ -1,8 +1,8 @@
 import React from 'react'
 import './find.scss';
-import { collection, getDocs, query, where, addDoc, doc, updateDoc } from 'firebase/firestore'
+import { collection, getDocs, query, where, doc, updateDoc } from 'firebase/firestore'
 import { projectStorage } from '../../firebase/config';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 
 
