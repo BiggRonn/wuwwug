@@ -3,10 +3,15 @@ import './stash.scss';
 import { collection, getDocs, query, where, addDoc} from 'firebase/firestore'
 import { projectStorage } from '../../firebase/config';
 import toast from 'react-hot-toast';
-
+import { auth } from '../../firebase/config';
 
 
 export default function Stash() {
+    
+    const userEmail = auth.currentUser.email;
+
+    console.log(userEmail)
+
     const [items, setItems] = useState([]);
     const [itemName, setItemName] = useState("Default Name");
 
@@ -17,17 +22,19 @@ export default function Stash() {
     const itemCollectionRef = collection(projectStorage, "items")
 
   
-    const q = query(itemCollectionRef, where("user_email", "==", "BigRonald42@hotmail.com"));
+    const q = query(itemCollectionRef, where("user_email", "==", {userEmail}));
 
     useEffect(() => {
+      console.log("STASH useFF line28Stash WTF!!")
+      
+      const getItems = async () => {
+        const itemsData = await getDocs(q);
         
-        const getItems = async () => {
-          const itemsData = await getDocs(q);
-          
-          setItems(itemsData.docs.map((doc) => ({...doc.data(), id: doc.id})))
-        }
-    
-        getItems();
+        setItems(itemsData.docs.map((doc) => ({...doc.data(), id: doc.id})))
+      }
+      
+      getItems();
+      console.log(items);
       }, [])
 
 
@@ -35,7 +42,7 @@ export default function Stash() {
       console.log(itemName, itemDescription, itemReserve)
 
       await addDoc(itemCollectionRef, {
-        user_email: "BigRonald42@hotmail.com",
+        user_email: {userEmail},
         name: itemName,
         description: itemDescription,
         offer: {
@@ -68,6 +75,7 @@ export default function Stash() {
                     <button onClick = {addItem}>Add Item</button>
                 </div>
          <div className="myItems">
+
          {items.map((item) => {
        return (
          <div className= "itemCard"key = {item.id}>

@@ -22,13 +22,15 @@ export function AuthProvider({ children }) {
     }
 
     useEffect(()=>{
-
-        const unsubscribe = () => onAuthStateChanged(user => {
-            setCurrentUser(user)
-            setLoading(false)
+        
+        auth.onAuthStateChanged(user=>{
+            if (user){
+                setCurrentUser(user)
+                setLoading(false);
+                console.log("AuthStateChanged line30 HEAFHEHA!!!")
+            }
         })
-
-        return unsubscribe
+            
     }, [])
 
 
