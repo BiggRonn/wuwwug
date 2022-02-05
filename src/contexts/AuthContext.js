@@ -22,13 +22,15 @@ export function AuthProvider({ children }) {
     }
 
     useEffect(()=>{
-        
+        setLoading(true)
+
         auth.onAuthStateChanged(user=>{
             if (user){
                 setCurrentUser(user)
                 setLoading(false);
                 console.log("AuthStateChanged line30 HEAFHEHA!!!")
             }
+            setLoading(false)
         })
             
     }, [])
@@ -37,7 +39,8 @@ export function AuthProvider({ children }) {
     const value = {
         currentUser,
         signup,
-        login
+        login,
+        
 
     }
     return (
