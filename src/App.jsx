@@ -13,6 +13,7 @@ import './App.scss';
 
 import { useState } from "react";
 import { AuthProvider } from "./contexts/AuthContext";
+import RequireAuth from "./components/requireAuth/RequireAuth";
 
 
 
@@ -28,8 +29,11 @@ function App() {
     <Header menuOpen = {menuOpen} setMenuOpen = {setMenuOpen} />
     <Menu menuOpen = {menuOpen} setMenuOpen = {setMenuOpen} />
     <Routes>
-      <Route path="/find" element={<Find/>} />
-      <Route path="/" element={<Stash />} />
+      
+      <Route path="/find" element={<RequireAuth><Find/></RequireAuth>} />
+      <Route path="/" element={<RequireAuth><Stash /></RequireAuth>} />
+
+      
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
     </Routes>

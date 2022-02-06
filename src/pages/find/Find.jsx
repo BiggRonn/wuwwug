@@ -4,25 +4,20 @@ import { collection, getDocs, query, where, doc, updateDoc } from 'firebase/fire
 import { projectStorage } from '../../firebase/config';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
+import ItemOfferCard from '../../components/itemOfferCard/ItemOfferCard';
 
 
 
 export default function Find() {
     const [items, setItems] = useState([]);
-    const [offerValue, setOfferValue] = useState(0);
-    const [offerNote, setOfferNote] = useState("Default Note");
+   
     const [itemSearch, setItemSearch] = useState("Stone of Jordan");
 
 
     const itemCollectionRef = collection(projectStorage, "items");
 
 
-    const handleValueChange = (e) => {
-        setOfferValue(e.target.value);
-    }
-    const handleNoteChange = (e) => {
-        setOfferNote(e.target.value)
-    }
+    
     const handleSearchChange = (e) => {
         setItemSearch(e.target.value)
     }
@@ -40,28 +35,7 @@ export default function Find() {
         getItems();
     }
 
-    const submitOffer = async (id, value) => {
-        
-        const goodOffer = (parseInt(offerValue) > parseInt(value));
-       
-        if(goodOffer){
-
-            const itemDoc = doc(projectStorage, "items", id)
-            
-            const newFields = {
-                offer: {
-                    value: offerValue,
-                    note: offerNote,
     
-                }
-            }
-            await updateDoc(itemDoc , newFields).then(toast.success("You made a good offer! t4t!"))
-            
-        }else{
-            toast.error("NTY, offer too LOW");
-        }
-
-    }
 
 
 
@@ -74,15 +48,9 @@ export default function Find() {
                 <button onClick={searchItem}>Search</button>
             </div>
             <div className="items">
-                {items.map((item) => {
+                {items.map((item, index) => {
                     return (
-                        <div className="itemCard" key={item.id}>
-                            <h2>{item.name}</h2>
-                            <h3>{item.description}</h3>
-                            <input type="number" placeholder="Enter offer amount" onChange={handleValueChange} />
-                            <input type="text" placeholder="Short message/Contact Info" onChange={handleNoteChange} />
-                            <button onClick={() => { submitOffer(item.id, item.offer.value) }}>Submit Offer</button>
-                        </div>
+                        <ItemOfferCard item={item} key={item.id} setItems = {setItems} index= {index}/>
                     )
                 })}
 

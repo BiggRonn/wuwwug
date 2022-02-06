@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { createContext, useEffect, useContext } from 'react'
 import { auth } from '../firebase/config';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const AuthContext = createContext();
 
@@ -13,12 +14,23 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(false)
 
+    let location = useLocation();
+
     function signup(email, password){
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     function login(email, password){
         return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    function signout(){
+        signOut(auth).then(() => {
+            console.log("signout success")
+
+        }).catch((error) => { 
+            console.log("failed to sign out")
+        })
     }
 
     useEffect(()=>{
@@ -28,7 +40,7 @@ export function AuthProvider({ children }) {
             if (user){
                 setCurrentUser(user)
                 setLoading(false);
-                console.log("AuthStateChanged line30 HEAFHEHA!!!")
+                
             }
             setLoading(false)
         })
@@ -40,6 +52,7 @@ export function AuthProvider({ children }) {
         currentUser,
         signup,
         login,
+        signout,
         
 
     }
