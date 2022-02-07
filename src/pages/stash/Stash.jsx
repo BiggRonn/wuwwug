@@ -1,9 +1,10 @@
 import { useState, useEffect, useMemo } from 'react';
 import './stash.scss';
-import { collection, getDocs, query, where, addDoc } from 'firebase/firestore'
+import { collection, getDocs, query, where, addDoc, deleteDoc } from 'firebase/firestore'
 import { projectStorage } from '../../firebase/config';
 import toast from 'react-hot-toast';
 import { auth } from '../../firebase/config';
+import ItemCard from '../../components/items/ItemCard';
 
 
 export default function Stash() {
@@ -22,20 +23,20 @@ export default function Stash() {
   // const itemCollectionRef = collection(projectStorage, "items")
 const itemCollectionRef = useMemo(() => collection(projectStorage, "items"), [projectStorage])
 
+const getItems = async () => {
+  const q = query(itemCollectionRef, where("user_email", "==", { userEmail }));
+  const itemsData = await getDocs(q);
+
+  setItems(itemsData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+}
   
   useEffect(() => {
     
     
-    const getItems = async () => {
-      const q = query(itemCollectionRef, where("user_email", "==", { userEmail }));
-      const itemsData = await getDocs(q);
-
-      setItems(itemsData.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    }
 
     if(userEmail){getItems()}
    
-  }, [userEmail, itemCollectionRef])
+  }, [userEmail, itemCollectionRef, getItems])
 
 
   const addItem = async () => {
@@ -51,6 +52,11 @@ const itemCollectionRef = useMemo(() => collection(projectStorage, "items"), [pr
       }
     })
     toast.success("Item Added");
+    getItems();
+  }
+
+  const deleteItem = async (id) => {
+    deleteDoc(itemCollectionRef, )
   }
 
   const handleNameChange = (e) => {
@@ -78,13 +84,8 @@ const itemCollectionRef = useMemo(() => collection(projectStorage, "items"), [pr
 
         {items.map((item) => {
           return (
-            <div className="itemCard" key={item.id}>
-              <h2>{item.name}</h2>
-              <h3>{item.description}</h3>
-              <h1>{item.offer.value}</h1>
-              <div>{item.offer.note}</div>
-              <button>Delete item</button>
-            </div>
+            
+            <ItemCard item={item} deleteItem={deleteItem}/>
           )
         })}
       </div>

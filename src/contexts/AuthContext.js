@@ -36,10 +36,10 @@ export function AuthProvider({ children }) {
     useEffect(()=>{
         setLoading(true)
 
-        auth.onAuthStateChanged(user=>{
+        onAuthStateChanged(auth, (user)=>{
             if (user){
                 setCurrentUser(user)
-                setLoading(false);
+                
                 
             }
             setLoading(false)

@@ -50,7 +50,7 @@ export default function Find() {
             <div className="items">
                 {items.map((item, index) => {
                     return (
-                        <ItemOfferCard item={item} key={item.id} setItems = {setItems} index= {index}/>
+                        <ItemOfferCard item={item} key={item.id} setItems={setItems} index= {index}/>
                     )
                 })}
 
