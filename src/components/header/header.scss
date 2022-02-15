@@ -71,11 +71,12 @@
         height: 50%;
         width: 100%;
     
-
+    .navWapper > *{
+        &:hover{
+            color: green
+        }
+    }
         
     }
-    .navWrapper> *{
-
-
-    }
+    
 }
