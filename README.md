@@ -1,4 +1,4 @@
-![WuwWug Trading App](public\assets\images\logoSlogan.png)
+![WuwWug Trading App](public/assets/images/logoSlogan.png)
 # WuwWug
 
 WuwWug is an app to streamline the trading process of in game items for Diablo 2 players. Diablo 2 is a popular action RPG released in 2001 and "resurrected" in 2021 with a large and dedicated fan base. WuwWug means "What U want? What u got?" which has been common shorthand trade dialog since 2001. The game is centered around a carefully balanced economy of rare items, which players trade between each other. A player may play for dozens or even hundreds of hours to find just ONE of these sought after items. To trade these items players typically make in-game trade lobbys or form groups on social media sites and post items, negotiate through comments, and then arrange a trade. WuwWug was created to greatly streamline this process. Instead of trudging through "homepages", "profiles" and "latest news" just to use the site for trading, Wuwwug allows users to quickly do exactly what they want- buy and sell in-game items. No need for usernames, avatars, quotes, discussions etc.. Just What U Want and What U Got!!! 
