@@ -71,12 +71,16 @@
         height: 50%;
         width: 100%;
     
-    .navWapper > *{
-        &:hover{
-            color: green
+    
+        .customLink{
+
+            transition: all 1s ease;
+           
+            &:hover{
+                color:orange;
+            }
         }
     }
-        
-    }
+
     
 }
