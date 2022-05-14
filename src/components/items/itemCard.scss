@@ -1,0 +1,29 @@
+@import "../../global.scss";
+
+.itemCard {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+
+   h3{
+       
+       font-family: 'Roboto', sans-serif;
+   }
+
+   div{
+       font-family: 'Roboto', sans-serif;
+
+       margin-bottom: 10px;
+   }
+
+   button{
+    
+    &:hover{
+        background-color: green;
+    }
+
+   }
+
+  
+}

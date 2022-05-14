@@ -20,8 +20,8 @@ export default function Header({menuOpen, setMenuOpen}) {
             </div>
             
             <nav className= 'navWrapper'>
-            <NavLink class ="customLink" to="/" >STASH</NavLink> 
-            <NavLink class ="customLink" to="/find" >FIND</NavLink>
+            <NavLink className="customLink" to="/" >STASH</NavLink> 
+            <NavLink className="customLink" to="/find" >FIND</NavLink>
             </nav>
         
         </div>
