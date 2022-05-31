@@ -1,15 +1,15 @@
 import React from 'react'
 import './itemCard.scss';
-import { collection, getDocs, query, where, doc, updateDoc, deleteDoc } from 'firebase/firestore'
+import { doc, deleteDoc } from 'firebase/firestore'
 import { projectStorage } from '../../firebase/config';
-import { Navigate } from 'react-router-dom';
+
 
 export default function ItemCard({ item }) {
     
     const deleteUser = async (id) =>{
         const itemDoc = doc(projectStorage, "items", id)
         await deleteDoc(itemDoc)
-       // window.location.reload(false)
+       
 
     }
 

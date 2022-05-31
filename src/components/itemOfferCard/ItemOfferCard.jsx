@@ -13,20 +13,15 @@ export default function ItemOfferCard({item, setItems, index}) {
     const handleNoteChange = (e) => {
         setOfferNote(e.target.value)
     }
-
     const submitOffer = async (id, value) => {
-        
         const goodOffer = (parseInt(offerValue) > parseInt(value));
        
         if(goodOffer){
-
             const itemDoc = doc(projectStorage, "items", id)
-            
             const newFields = {
                 offer: {
                     value: offerValue,
                     note: offerNote,
-    
                 }
             }
             await updateDoc(itemDoc , newFields).then(toast.success("You made a good offer! t4t!"))

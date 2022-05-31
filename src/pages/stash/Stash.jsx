@@ -8,20 +8,16 @@ import ItemCard from '../../components/items/ItemCard';
 
 
 export default function Stash() {
-
-    //checks to see if auth.currentUser exists before setting userEmail variable.
+  //checks to see if auth.currentUser exists before setting userEmail variable.
   const userEmail = auth.currentUser?.email;
-
 
   const [items, setItems] = useState([]);
   const [itemName, setItemName] = useState("Default Name");
-
   const [itemDescription, setItemDescription] = useState("Default Description");
-
   const [itemReserve, setItemReserve] = useState("Default Reserve")
 
   // const itemCollectionRef = collection(projectStorage, "items")
-const itemCollectionRef = useMemo(() => collection(projectStorage, "items"), [projectStorage])
+const itemCollectionRef = useMemo(() => collection(projectStorage, "items"), [])
 
 const getItems = async () => {
   const q = query(itemCollectionRef, where("user_email", "==", { userEmail }));
@@ -41,7 +37,6 @@ const getItems = async () => {
 
   const addItem = async () => {
     console.log(itemName, itemDescription, itemReserve)
-
     await addDoc(itemCollectionRef, {
       user_email: { userEmail },
       name: itemName,
@@ -54,11 +49,9 @@ const getItems = async () => {
     toast.success("Item Added");
     getItems();
   }
-
   const deleteItem = async (id) => {
     deleteDoc(itemCollectionRef, )
   }
-
   const handleNameChange = (e) => {
     setItemName(e.target.value);
   }
@@ -68,12 +61,8 @@ const getItems = async () => {
   const handleReserveChange = (e) => {
     setItemReserve(e.target.value)
   }
-
   return (
-
     <div className="stashContainer">
-
-
       <div className="itemForm">
         <input id="itemName" type="text" placeholder="Item Name (e.g. Griffon's Eye)" onChange={handleNameChange} />
         <textarea placeholder="Add a short description, with stats first (e.g. 20/15 unsocketed)" id="itemDescription" cols="35" rows="5" onChange={handleDescriptionChange}></textarea>
@@ -81,15 +70,12 @@ const getItems = async () => {
         <button onClick={addItem}>Add Item</button>
       </div>
       <div className="myItems">
-
         {items.map((item) => {
           return (
-            
             <ItemCard item={item} deleteItem={deleteItem}/>
           )
         })}
       </div>
-
     </div>
   )
 }
