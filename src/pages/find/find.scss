@@ -41,8 +41,15 @@
         padding: 25px;
         background-color: $grey;
 
+        h3{
+            font-family: 'Roboto', sans-serif;
+            color: $darkRed;
+            
+        }
         h2{
+            align-self: center;
             color: $beige;
+            border-bottom: 2px solid orange;
         }
 
         h1{
@@ -50,10 +57,10 @@
         }
 
         input{
-            margin-bottom: 5px;
+            margin-bottom: 15px;
         }
         button{
-            margin-top: 15px;
+            
             height: 60px;
             width: 70%;
             align-self: center;
