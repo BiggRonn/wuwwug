@@ -19,7 +19,7 @@ export default function ItemCard({ item }) {
            <h3>{item.description}</h3>
            <h1>Offer: {item.offer.value}</h1>
            <div>{item.offer.note}</div>
-           <button onClick ={() => {deleteUser(item.id)}}>DELETE</button>
+           <button onClick ={() => {deleteUser(item.id)}}>ACCEPT AND DELETE</button>
          </div>
     )
 }
