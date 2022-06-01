@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { collection, getDocs, query, where, doc, updateDoc } from 'firebase/firestore'
+import { doc, updateDoc } from 'firebase/firestore'
 import { projectStorage } from '../../firebase/config';
 
 export default function ItemOfferCard({item, setItems, index}) {

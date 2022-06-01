@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { createContext, useEffect, useContext } from 'react'
 import { auth } from '../firebase/config';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
-import { useLocation } from 'react-router-dom';
+
 
 const AuthContext = createContext();
 
@@ -14,7 +14,7 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(false)
 
-    let location = useLocation();
+   
 
     function signup(email, password){
         return createUserWithEmailAndPassword(auth, email, password)
