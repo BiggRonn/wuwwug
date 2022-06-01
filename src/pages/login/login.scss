@@ -1,1 +1,10 @@
 @import "../../global.scss";
+
+.card{
+    max-width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+    padding-bottom: 40px;
+}

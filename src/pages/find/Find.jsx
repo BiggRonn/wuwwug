@@ -34,7 +34,7 @@ export default function Find() {
     return (
         <div className="wrapper">
             <div className="searchBar">
-                <input type="text" className="itemSearch" placeholder="Find item by name" onChange={handleSearchChange} />
+                <input type="text" className="itemSearch" placeholder="Item Name" onChange={handleSearchChange} />
                 <button onClick={searchItem}>Search</button>
             </div>
             <div className="items">

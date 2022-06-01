@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo} from 'react';
 import './stash.scss';
 import { collection, getDocs, query, where, addDoc, deleteDoc } from 'firebase/firestore'
 import { projectStorage } from '../../firebase/config';
@@ -27,9 +27,7 @@ const getItems = async () => {
 }
   
   useEffect(() => {
-    
-    
-
+  
     if(userEmail){getItems()}
    
   }, [userEmail, itemCollectionRef, getItems])

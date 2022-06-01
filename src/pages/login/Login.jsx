@@ -50,7 +50,7 @@ export default function Login() {
     return (
         <div className='cardContainer'>
 
-            <Card className='card'>
+            <Card className='card' class="card">
                 <h2 className='text-center mb-4'>Log In</h2>
                 <Form className='form' onSubmit={handleSubmit}>
                     <Form.Group id='email'>

@@ -47,10 +47,16 @@
     }
 }
 .myItems{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
     height: 30vh;
-   
+  
 
     .itemCard{
+        width: 100%;
         color: $darkRed;
         border: 3px solid orange;
         border-radius: 15px;

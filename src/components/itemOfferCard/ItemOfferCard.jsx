@@ -1,3 +1,4 @@
+import './itemOfferCard.scss';
 import React from 'react'
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
@@ -40,8 +41,8 @@ export default function ItemOfferCard({item, setItems, index}) {
             <div className="itemCard" key={item.id}>
                 <h2>{item.name}</h2>
                 <h3>{item.description}</h3>
-                <input type="number" placeholder="Enter offer amount" onChange={handleValueChange} />
-                <input type="text" placeholder="Short message/Contact Info" onChange={handleNoteChange} />
+                <input type="number" placeholder="Amount" onChange={handleValueChange} />
+                <input type="text" placeholder="Message/Info" onChange={handleNoteChange} />
                 <button onClick={() => { submitOffer(item.id, item.offer.value) }}>Submit Offer</button>
             </div>
         )

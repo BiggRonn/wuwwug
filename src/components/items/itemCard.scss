@@ -1,10 +1,15 @@
 @import "../../global.scss";
 
+
+.itemForm{
+    margin-top: 40px;
+}
 .itemCard {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
  
     h3{
         
