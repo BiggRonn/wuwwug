@@ -15,8 +15,6 @@ export default function Stash() {
   const [itemName, setItemName] = useState("Default Name");
   const [itemDescription, setItemDescription] = useState("Default Description");
   const [itemReserve, setItemReserve] = useState("Default Reserve")
-
-  // const itemCollectionRef = collection(projectStorage, "items")
 const itemCollectionRef = useMemo(() => collection(projectStorage, "items"), [])
 
 const getItems = async () => {
@@ -27,10 +25,8 @@ const getItems = async () => {
 }
   
   useEffect(() => {
-  
     if(userEmail){getItems()}
-   
-  }, [userEmail, itemCollectionRef, getItems])
+  })
 
 
   const addItem = async () => {

@@ -29,8 +29,6 @@ export default function Find() {
     getItems();
 
 
-
-
     return (
         <div className="wrapper">
             <div className="searchBar">
